@@ -1,0 +1,6 @@
+---
+name: simple-python-flask-app
+packages: []
+templates:
+  ignoreme: ignoreme
+properties: {}

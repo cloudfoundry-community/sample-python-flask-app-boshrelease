@@ -1,0 +1,6 @@
+---
+- type: replace
+  path: /releases/name=simple-python-flask-app
+  value:
+    name: simple-python-flask-app
+    version: latest
