@@ -1,0 +1,5 @@
+check process sample-python-flask-app
+  with pidfile /var/vcap/sys/run/sample-python-flask-app/sample-python-flask-app.pid
+  start program "/var/vcap/jobs/sample-python-flask-app/bin/monit_debugger ctl '/var/vcap/jobs/sample-python-flask-app/bin/ctl start'"
+  stop program "/var/vcap/jobs/sample-python-flask-app/bin/monit_debugger ctl '/var/vcap/jobs/sample-python-flask-app/bin/ctl stop'"
+  group vcap

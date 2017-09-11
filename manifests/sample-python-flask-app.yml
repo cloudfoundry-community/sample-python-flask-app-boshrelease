@@ -1,16 +1,16 @@
 ---
-name: simple-python-flask-app
+name: sample-python-flask-app
 
 instance_groups:
-- name: simple-python-flask-app
+- name: webapp
   azs: [z1, z2, z3]
   instances: 1
   vm_type: default
   stemcell: default
   networks: [{name: default}]
   jobs:
-  - name: simple-python-flask-app
-    release: simple-python-flask-app
+  - name: sample-python-flask-app
+    release: sample-python-flask-app
     properties: {}
 
 variables: []
@@ -28,7 +28,7 @@ update:
   serial: false
 
 releases:
-- name: simple-python-flask-app
+- name: sample-python-flask-app
   version: latest # TODO: update after first final release
   # url:            TODO: update after first final release
   # sha1:           TODO: update after first final release

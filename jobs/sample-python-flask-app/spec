@@ -1,5 +1,5 @@
 ---
-name: simple-python-flask-app
+name: sample-python-flask-app
 
 packages:
 - python
@@ -17,8 +17,8 @@ templates:
 consumes: []
 
 provides:
-- name: simple-python-flask-app
-  type: simple-python-flask-app
+- name: webapp
+  type: webapp
   properties:
   - port
 

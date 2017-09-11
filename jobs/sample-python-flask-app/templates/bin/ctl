@@ -4,7 +4,7 @@ set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
 # Setup env vars and folders for the webapp_ctl script
-source /var/vcap/jobs/simple-python-flask-app/helpers/ctl_setup.sh 'simple-python-flask-app'
+source /var/vcap/jobs/sample-python-flask-app/helpers/ctl_setup.sh 'sample-python-flask-app'
 
 export PORT=<%= p("port") %>
 export LANG=en_US.UTF-8
