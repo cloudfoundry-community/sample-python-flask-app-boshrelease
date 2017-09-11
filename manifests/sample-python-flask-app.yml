@@ -29,6 +29,6 @@ update:
 
 releases:
 - name: sample-python-flask-app
-  version: latest # TODO: update after first final release
-  # url:            TODO: update after first final release
-  # sha1:           TODO: update after first final release
+  version: 1.0.0
+  url:  https://github.com/cloudfoundry-community/sample-python-flask-app-boshrelease/releases/download/v1.0.0/sample-python-flask-app-1.0.0.tgz
+  sha1: 9c1854ba220c66e4bd7658012c4aef53637c291e
