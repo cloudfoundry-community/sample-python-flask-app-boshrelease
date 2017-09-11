@@ -1,6 +1,6 @@
 ---
 name: simple-python-flask-app
-packages: []
+packages: [python27]
 templates:
   ignoreme: ignoreme
 properties: {}
