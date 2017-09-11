@@ -1,6 +1,28 @@
 ---
 name: simple-python-flask-app
-packages: [python27]
+
+packages:
+- python
+- simpleflaskapp
+
 templates:
-  ignoreme: ignoreme
-properties: {}
+  bin/ctl: bin/ctl
+  bin/monit_debugger: bin/monit_debugger
+  config/gunicorn.conf.py: config/gunicorn.conf.py
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+
+# Documentation https://bosh.io/docs/links.html
+# Tutorial      https://gist.github.com/Amit-PivotalLabs/c39528248b8cdc4ba8e347f8aa68abb6
+consumes: []
+
+provides:
+- name: simple-python-flask-app
+  type: simple-python-flask-app
+  properties:
+  - port
+
+properties:
+  port:
+    description: Bind to this port
+    default: 8080

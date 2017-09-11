@@ -1,0 +1,16 @@
+# abort script on any command that exits with a non zero value
+set -e -x
+
+cp -a simpleflaskapp/* ${BOSH_INSTALL_TARGET}
+
+cd ${BOSH_INSTALL_TARGET}
+
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib:$LD_LIBRARY_PATH
+export C_INCLUDE_PATH=/var/vcap/packages/python/include:$C_INCLUDE_PATH
+export PATH=/var/vcap/packages/python/bin:$PATH
+virtualenv --always-copy venv
+. venv/bin/activate
+pip install -r requirements.txt
+virtualenv --relocatable venv
+deactivate
+sed -i 's/^\(VIRTUAL_ENV\)=.\+$/\1="\/var\/vcap\/packages\/simpleflaskapp\/venv"/g' venv/bin/activate
