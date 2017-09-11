@@ -21,3 +21,12 @@ pushd Python*
   make install
 popd
 
+for dir in $(ls -d /var/vcap/packages/*/bin); do export PATH=$dir:$PATH; done
+for dir in $(ls -d /var/vcap/packages/*/lib); do export LD_LIBRARY_PATH=$dir:${LD_LIBRARY_PATH:-}; done
+
+pip install --upgrade python/wheel-*-py2.py3-none-any.whl
+pip install --upgrade python/pip-*-py2.py3-none-any.whl
+pip install --upgrade python/setuptools-*-py2.py3-none-any.whl
+pip install --upgrade python/virtualenv-*-py2.py3-none-any.whl
+
+

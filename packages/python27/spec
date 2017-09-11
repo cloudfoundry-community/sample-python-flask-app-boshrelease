@@ -3,3 +3,8 @@ name: python27
 dependencies: []
 files:
 - python/Python-2.7.*.tar.xz
+
+- python/wheel-*-py2.py3-none-any.whl
+- python/pip-*-py2.py3-none-any.whl
+- python/setuptools-*-py2.py3-none-any.whl
+- python/virtualenv-*-py2.py3-none-any.whl
