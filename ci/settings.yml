@@ -42,12 +42,33 @@ groups:
 - name: blobs
   jobs:
   - pip
+  - setuptools
+  - virtualenv
+  - wheel
 
 resources:
   - name: pip
     type: pypi
     source:
       name: pip
+      username: (( vault "secret/python-pypi/bot:username" ))
+      password: (( vault "secret/python-pypi/bot:password" ))
+  - name: setuptools
+    type: pypi
+    source:
+      name: setuptools
+      username: (( vault "secret/python-pypi/bot:username" ))
+      password: (( vault "secret/python-pypi/bot:password" ))
+  - name: virtualenv
+    type: pypi
+    source:
+      name: virtualenv
+      username: (( vault "secret/python-pypi/bot:username" ))
+      password: (( vault "secret/python-pypi/bot:password" ))
+  - name: wheel
+    type: pypi
+    source:
+      name: wheel
       username: (( vault "secret/python-pypi/bot:username" ))
       password: (( vault "secret/python-pypi/bot:password" ))
 
@@ -82,6 +103,183 @@ jobs:
         BLOB_URL:    https://pypi.python.org/pypi/pip/
         BLOB_CLEANUP:     python/pip-.*
         BLOB_DESTINATION: python/pip-${VERSION}-py2.py3-none-any.whl
+        AWS_ACCESS_KEY: (( grab meta.aws.access_key ))
+        AWS_SECRET_KEY: (( grab meta.aws.secret_key ))
+        BRANCH:         (( grab meta.github.branch ))
+    on_failure:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_failure ))
+  - put: git
+    params:
+      rebase: true
+      repository: pushme/git
+    on_success:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_success ))
+    on_failure:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_failure ))
+
+- name: setuptools
+  public: true
+  plan:
+  - aggregate:
+    - { get: git }
+    - { get: setuptools, trigger: true }
+  - task: update-setuptools
+    config:
+      image_resource:
+        type: docker-image
+        source:
+          repository: (( grab meta.image.name ))
+          tag:        (( grab meta.image.tag ))
+      platform: linux
+      inputs:
+      - name: git
+      - name: setuptools
+      outputs:
+      - name: pushme
+      run:
+        path: ./git/ci/scripts/update-blob
+      params:
+        REPO_ROOT:   git
+        REPO_OUT:    pushme
+        BLOB_DIR:    setuptools
+        BLOB_NAME:   setuptools
+        BLOB_BINARY: setuptools-*-py2.py3-none-any.whl
+        BLOB_URL:    https://pypi.python.org/pypi/setuptools/
+        BLOB_CLEANUP:     python/setuptools-.*
+        BLOB_DESTINATION: python/setuptools-${VERSION}-py2.py3-none-any.whl
+        AWS_ACCESS_KEY: (( grab meta.aws.access_key ))
+        AWS_SECRET_KEY: (( grab meta.aws.secret_key ))
+        BRANCH:         (( grab meta.github.branch ))
+    on_failure:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_failure ))
+  - put: git
+    params:
+      rebase: true
+      repository: pushme/git
+    on_success:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_success ))
+    on_failure:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_failure ))
+
+- name: virtualenv
+  public: true
+  plan:
+  - aggregate:
+    - { get: git }
+    - { get: virtualenv, trigger: true }
+  - task: update-virtualenv
+    config:
+      image_resource:
+        type: docker-image
+        source:
+          repository: (( grab meta.image.name ))
+          tag:        (( grab meta.image.tag ))
+      platform: linux
+      inputs:
+      - name: git
+      - name: virtualenv
+      outputs:
+      - name: pushme
+      run:
+        path: ./git/ci/scripts/update-blob
+      params:
+        REPO_ROOT:   git
+        REPO_OUT:    pushme
+        BLOB_DIR:    virtualenv
+        BLOB_NAME:   virtualenv
+        BLOB_BINARY: virtualenv-*-py2.py3-none-any.whl
+        BLOB_URL:    https://pypi.python.org/pypi/virtualenv/
+        BLOB_CLEANUP:     python/virtualenv-.*
+        BLOB_DESTINATION: python/virtualenv-${VERSION}-py2.py3-none-any.whl
+        AWS_ACCESS_KEY: (( grab meta.aws.access_key ))
+        AWS_SECRET_KEY: (( grab meta.aws.secret_key ))
+        BRANCH:         (( grab meta.github.branch ))
+    on_failure:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_failure ))
+  - put: git
+    params:
+      rebase: true
+      repository: pushme/git
+    on_success:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_success ))
+    on_failure:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_failure ))
+
+- name: wheel
+  public: true
+  plan:
+  - aggregate:
+    - { get: git }
+    - { get: wheel, trigger: true }
+  - task: update-wheel
+    config:
+      image_resource:
+        type: docker-image
+        source:
+          repository: (( grab meta.image.name ))
+          tag:        (( grab meta.image.tag ))
+      platform: linux
+      inputs:
+      - name: git
+      - name: wheel
+      outputs:
+      - name: pushme
+      run:
+        path: ./git/ci/scripts/update-blob
+      params:
+        REPO_ROOT:   git
+        REPO_OUT:    pushme
+        BLOB_DIR:    wheel
+        BLOB_NAME:   wheel
+        BLOB_BINARY: wheel-*-py2.py3-none-any.whl
+        BLOB_URL:    https://pypi.python.org/pypi/wheel/
+        BLOB_CLEANUP:     python/wheel-.*
+        BLOB_DESTINATION: python/wheel-${VERSION}-py2.py3-none-any.whl
         AWS_ACCESS_KEY: (( grab meta.aws.access_key ))
         AWS_SECRET_KEY: (( grab meta.aws.secret_key ))
         BRANCH:         (( grab meta.github.branch ))
