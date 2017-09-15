@@ -81,7 +81,7 @@ jobs:
         BLOB_BINARY: pip-*-py2.py3-none-any.whl
         BLOB_URL:    https://pypi.python.org/pypi/pip/
         BLOB_CLEANUP:     python/pip-.*
-        BLOB_DESTINATION: python/pip-v${VERSION}-py2.py3-none-any.whl
+        BLOB_DESTINATION: python/pip-${VERSION}-py2.py3-none-any.whl
         AWS_ACCESS_KEY: (( grab meta.aws.access_key ))
         AWS_SECRET_KEY: (( grab meta.aws.secret_key ))
         BRANCH:         (( grab meta.github.branch ))
