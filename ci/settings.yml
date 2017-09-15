@@ -75,6 +75,7 @@ resources:
 jobs:
 - name: pip
   public: true
+  serial_groups: [git]
   plan:
   - aggregate:
     - { get: git }
@@ -134,6 +135,7 @@ jobs:
 
 - name: setuptools
   public: true
+  serial_groups: [git]
   plan:
   - aggregate:
     - { get: git }
@@ -193,6 +195,7 @@ jobs:
 
 - name: virtualenv
   public: true
+  serial_groups: [git]
   plan:
   - aggregate:
     - { get: git }
@@ -252,6 +255,7 @@ jobs:
 
 - name: wheel
   public: true
+  serial_groups: [git]
   plan:
   - aggregate:
     - { get: git }
