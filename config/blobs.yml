@@ -14,7 +14,7 @@ python/virtualenv-15.1.0-py2.py3-none-any.whl:
   size: 1820727
   object_id: 2f4c4c41-6989-4630-56ea-36c611d3bdf5
   sha: 0def1fa94de51aa56e24eaefe2173df7249e6ded
-python/wheel-0.29.0-py2.py3-none-any.whl:
-  size: 66878
-  object_id: 3e763e85-54e1-4fed-520b-74599a048d02
-  sha: fcbf015b87179d0ad05eeb1c72282c172e313793
+python/wheel-0.30.0-py2.py3-none-any.whl:
+  size: 49751
+  object_id: a5e03fc1-b449-41e7-53a5-e7d854035f2f
+  sha: 11694b2cfb611fd4accb1135c7d0fef9db4cd926
