@@ -26,3 +26,6 @@ Bumped https://pypi.python.org/pypi/setuptools/ to v36.7.2
 
 # setuptools
 Bumped https://pypi.python.org/pypi/setuptools/ to v36.8.0
+
+# setuptools
+Bumped https://pypi.python.org/pypi/setuptools/ to v37.0.0
