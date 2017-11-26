@@ -35,3 +35,6 @@ Bumped https://pypi.python.org/pypi/setuptools/ to v38.0.0
 
 # setuptools
 Bumped https://pypi.python.org/pypi/setuptools/ to v38.1.0
+
+# setuptools
+Bumped https://pypi.python.org/pypi/setuptools/ to v38.2.0
