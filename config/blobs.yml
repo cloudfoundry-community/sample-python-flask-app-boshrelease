@@ -2,10 +2,10 @@ python/Python-2.7.13.tar.xz:
   size: 12495628
   object_id: e3371430-eca9-489e-4656-46d4adc55b34
   sha: 18a8f30a0356c751b8d0ea6f76e764cab13ee046
-python/pip-9.0.1-py2.py3-none-any.whl:
-  size: 1254803
-  object_id: f034b9f1-f13c-48f0-682d-02c530d967a0
-  sha: c70393185d27ae8b49a117e6dcc18bc5f8f3a1c3
+python/pip-9.0.2-py2.py3-none-any.whl:
+  size: 1400942
+  object_id: f940f435-82a3-4039-715a-4f448d2b67f5
+  sha: 1af511ebfa60766facb804444e2e2bf7964068d9
 python/setuptools-38.6.0-py2.py3-none-any.whl:
   size: 490301
   object_id: 57833c43-4865-4627-5a2c-835d7b26f524
