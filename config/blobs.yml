@@ -6,10 +6,10 @@ python/pip-9.0.2-py2.py3-none-any.whl:
   size: 1400942
   object_id: f940f435-82a3-4039-715a-4f448d2b67f5
   sha: 1af511ebfa60766facb804444e2e2bf7964068d9
-python/setuptools-38.6.0-py2.py3-none-any.whl:
-  size: 490301
-  object_id: 57833c43-4865-4627-5a2c-835d7b26f524
-  sha: 4ce90ba42c3bcc5fd21dab667132c72f1733660b
+python/setuptools-38.6.1-py2.py3-none-any.whl:
+  size: 490310
+  object_id: e5427030-7768-4883-5cdd-6a4d9dfcd8ac
+  sha: 44d4dec695c05007eb87ccd0cb0d906b055c49f3
 python/virtualenv-15.1.0-py2.py3-none-any.whl:
   size: 1820727
   object_id: 69c3efc2-60ad-48c5-58d1-2f6fcdcfdc29
